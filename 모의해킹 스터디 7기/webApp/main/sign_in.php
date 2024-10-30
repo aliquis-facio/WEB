@@ -3,6 +3,7 @@
 <head>
     <title>SIGN IN</title>
     <meta content="charset=utf-8">
+    <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/sign_in.css">
     <script></script>
 </head>
@@ -22,8 +23,8 @@
 
     <div class = "footBox">
         <nav>
-            <a href="find.php">비밀번호 찾기</a> | 
-            <a href="find.php">아이디 찾기</a> | 
+            <a href="find_id.php">아이디 찾기</a> | 
+            <a href="find_pw.php">비밀번호 찾기</a> | 
             <a href="sign_up.php">회원가입</a>
         </nav>
     </div>

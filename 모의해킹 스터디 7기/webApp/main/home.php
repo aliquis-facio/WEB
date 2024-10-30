@@ -4,6 +4,7 @@
 <head>
     <title>HOME</title>
     <meta content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/home.css">
     <script></script>
 </head>

@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 
 <head>
-    <title>FIND</title>
+    <title>FIND ID</title>
     <meta content="charset=utf-8">
+    <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/find.css">
     <script></script>
 </head>
 
 <body>
-    <div class = "headBox">
-        <a class = "title" href="home.php">안녕하진않아요</a>
-    </div>
+    <div class="container">
+        <div class = "headBox">
+            <a class = "title" href="home.php">안녕하진않아요</a>
+        </div>
+    
+        <div class = "bodyBox">
+            <h1>아이디 찾기</h1>
+            <h3>아이디 찾는 방법을 선택해 주세요.</h3>
 
-    <div class = "bodyBox">
-        <h1>아이디 찾기</h1>
-        <p>아이디 찾는 방법을 선택해 주세요.</p>
-        <button disabled="disabled"></button>
-        <form action="">
-            <input name="name" type="text" placeholder="이름">
-            <input name="number" type="text" placeholder="휴대전화번호">
-            <button type="submit">인증번호 받기</button>
-        </form>
-        <form action="">
-            <input name="name" type="text" placeholder="이름">
-            <input name="email" type="text" placeholder="이메일 주소">
-            <button type="submit">인증번호 받기</button>
-        </form>
-    </div>
+            <div>
+                <input id="check-btn-number" type="checkbox">
+                <label for="check-btn-number">회원정보에 등록한 휴대전화로 인증</label>
+                <div class="number-container">
+                    <h6>회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 아이디를 받을 수 있습니다.</h6>
+                    <form action="find_id_proc.php" method="post">
+                        <input name="name1" type="text" placeholder="이름">
+                        <input name="number" type="text" placeholder="휴대전화번호">
+                        <button>휴대전화로 인증</button>
+                    </form>
+                </div>
+            </div>
 
-    <div class = "footBox">
-        <button type="button">다음</button>
+            <div>
+                <input id="check-btn-email" type="checkbox">
+                <label for="check-btn-email">본인확인 이메일로 인증</label>
+                <div class="email-container">
+                    <h6>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 아이디를 받을 수 있습니다.</h6>
+                    <form action="find_id_proc.php" method="post">
+                        <input name="name2" type="text" placeholder="이름">
+                        <input name="email" type="text" placeholder="이메일 주소">
+                        <button>이메일로 인증</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

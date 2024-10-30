@@ -3,13 +3,14 @@
 <head>
     <title>SCORE BOARD</title>
     <meta content="charset=utf-8">
+    <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/score_board.css">
     <script></script>
 </head>
 
 <body>
     <div class = "headBox">
-        <a class = "title" href="home.php">안녕하진않아요</a>
+        <a class = "title" href="index.html">index</a>
     </div>
 
     <div class = "bodyBox">

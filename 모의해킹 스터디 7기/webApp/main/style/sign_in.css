@@ -1,113 +1,32 @@
-@font-face {
-    font-family: 'SBAggroB';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-html {
-    height: 100%;
-    font-family: 'SBAggroB';
+button {
+    margin-top: 10px;
 }
 
 .headBox {
-    border: 0px;
     position: absolute;
     left: 50%;
     top: 25%;
     transform: translate(-50%, -50%);
-    box-sizing: border-box;
-}
-
-a {
-    text-align: center;
-    color: pink;
-    text-decoration-line: none;
-}
-
-a.title {
-    font-size: 50px;
 }
 
 .bodyBox {
-    background-color: #27d4e8;
-    border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
 .bodyBox .inputBox {
     position: relative;
 }
 
-input {
-    height: 40px;
-    width: 100%;
-
-    margin: 10px auto;
-
-    border-radius: 4px;
-    border-left: 0px;
-    border-right: 0px;
-    border-top: 0px;
-    border-bottom: pink;
-
-    padding-left: 5px;
-
-    color: white;
-    background: #6dc0c9;
-
-    font-family: 'SBAggroB';
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-}
-
-button {
-    height: 40px;
-    width: 100%;
-
-    border: none;
-    border-radius: 4px;
-
-    margin-top: 10px;
-    margin-bottom: 0px;
-
-    background: blue;
-    color: #ffffff;
-
-    font-family: 'SBAggroB';
-    font-weight: 700;
-    font-size: 14pt;
-}
-
-form {
-    width: 90%;
-    margin: 20px auto;
-    text-align: center;
-}
-
-input:focus {
-    outline: none
-}
-
-div.footBox {
+.footBox {
     position: absolute;
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* box-sizing: border-box */
 }
 
 #text {
     position: static;
-}
-
-nav {
-    color: black;
 }

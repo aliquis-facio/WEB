@@ -3,6 +3,7 @@
 <head>
     <title>SIGN UP</title>
     <meta content="charset=utf-8">
+    <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/sign_up.css">
     <script></script>
 </head>

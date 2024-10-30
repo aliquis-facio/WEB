@@ -1,13 +1,15 @@
-a {
-    vertical-align: middle;
+p {
+    margin: 0 auto;
 }
 
-a.title {
-    writing-mode: vertical-rl;
-}
-
-button {
-    margin-top: 10px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #e82791;
+    margin: 4px;
 }
 
 .container {
@@ -37,23 +39,36 @@ button {
 .bodyBox {
     background-color: #27d4e8;
     border-radius: 10px;
+    height: fit-content;
     width: 400px;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.bodyBox .inputBox {
-    position: relative;
-    width: 100%;
+.email-container {
+    display: none;
+    opacity: 0;
 }
 
-.footBox {
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.number-container {
+    display: none;
+    opacity: 0;
 }
 
-#text {
-    position: static;
+#check-btn-email {
+    display: none;
+}
+
+#check-btn-number {
+    display: none;
+}
+
+#check-btn-number:checked~.number-container {
+    display: block;
+    opacity: 1;
+}
+
+#check-btn-email:checked~.email-container {
+    display: block;
+    opacity: 1;
 }
