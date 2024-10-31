@@ -16,6 +16,7 @@ function get_id($conn, $id, $name, $type, $var) {
         exit;
     }
 }
+
 //sql 서버 연결
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'admin');
