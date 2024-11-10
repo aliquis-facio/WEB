@@ -1,2 +1,3 @@
-let elem = document.getElementById("test");
-elem.innerHTML = "10" + 1;
+document.write("ABC<br>");
+document.write("DEF");
+confirm("ALPHABET");
