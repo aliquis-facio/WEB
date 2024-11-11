@@ -24,7 +24,7 @@ $input_pw = $_POST["pw"];
 
 if (empty($input_id) or empty($input_pw)) {
     echo "<script>alert('Fill in the blank plz')</script>";
-    echo "<script>location.replace('sign_in.php');</script>";
+    echo "<script>location.replace('./sign_in.php');</script>";
     exit;
 } else {
     $select_sql = "select * from Data where id = '{$input_id}'";
@@ -34,10 +34,10 @@ if (empty($input_id) or empty($input_pw)) {
         $_SESSION['user_id'] = $result['id'];
         $_SESSION['user_name'] = $result['name'];
         $_SESSION['user_score'] = $result['score'];
-        echo "<script>location.replace('home.php');</script>";
+        echo "<script>location.replace('../home.php');</script>";
     } else {
         echo "<script>alert('아이디(로그인 전화번호, 로그인 전용 아이디) 또는 비밀번호가 잘못 되었습니다. 아이디와 비밀번호를 정확히 입력해 주세요.')</script>";
-        echo "<script>location.replace('sign_in.php');</script>";
+        echo "<script>location.replace('./sign_in.php');</script>";
         exit;
     }
 }

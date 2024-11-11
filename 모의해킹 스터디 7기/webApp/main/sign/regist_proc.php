@@ -42,11 +42,11 @@ if($check) {
     
     $result = mysqli_query($conn, $insert_sql);
     echo "<script>alert('회원가입되셨습니다!')</script>";
-    echo "<script>location.replace('sign_in.php');</script>";
+    echo "<script>location.replace('./sign_in.php');</script>";
     exit;
 } else {
     echo "<script>alert('Fill in the blank plz')</script>";
-    echo "<script>location.replace('sign_up.php');</script>";
+    echo "<script>location.replace('./sign_up.php');</script>";
     exit;
 }
 

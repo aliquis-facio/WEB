@@ -12,7 +12,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user_name'])) {
-    echo "<script>location.replace('sign_in.php');</script>";
+    echo "<script>location.replace('./sign/sign_in.php');</script>";
 } else {
     $user_id = $_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
@@ -22,8 +22,9 @@ if(!isset($_SESSION['user_name'])) {
 
 <body>
     <div class="headBox">
-        <a class="title" href="home.php">안녕하진않아요</a>
+        <a class="title" href="./home.php">안녕하진않아요</a>
     </div>
+
     <div class="bodyBox">
         <ul>
             <li><?php echo "ID: {$user_id}"?></li>
@@ -31,8 +32,14 @@ if(!isset($_SESSION['user_name'])) {
             <li><?php echo "Score: {$user_score}"?></li>
         </ul>
     </div>
+
     <div class="footBox">
-        <button type="button" class="btn" onclick="location.href = 'logout.php'">LOG OUT</button>
+        <nav>
+            <a href="./board/list.php">게시판</a>
+            <a href="./score_board.php">점수판</a>
+        </nav>
+
+        <button type="button" class="btn" onclick="location.href = './sign/logout.php'">LOG OUT</button>
     </div>
 </body>
 
