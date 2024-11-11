@@ -1,7 +1,7 @@
 <?php
 function login1($conn, $user_id, $user_pw) {
     // identify and certify as the same time
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}' AND pw = '{$user_pw}'";
+    $sql = "SELECT * FROM member WHERE id = '{$user_id}' AND pw = '{$user_pw}'";
     $result = mysqli_fetch_array(mysqli_query($conn, $sql));
     
     if($result) {
@@ -17,7 +17,7 @@ function login1($conn, $user_id, $user_pw) {
 
 function login2($conn, $user_id, $user_pw) {
     // identify and certify seperation
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}'";
+    $sql = "SELECT * FROM member WHERE id = '{$user_id}'";
     $result = mysqli_fetch_array(mysqli_query($conn, $sql));
     
     $db_pw = $result['pw'];
@@ -35,7 +35,7 @@ function login2($conn, $user_id, $user_pw) {
 function login3($conn, $user_id, $user_pw) {
     // identify and certify as the same time with hash
     $hash_user_pw = hash('sha512', $user_pw);
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
+    $sql = "SELECT * FROM member WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
     $result = mysqli_fetch_array(mysqli_query($conn, $sql));
     
     if($result) {

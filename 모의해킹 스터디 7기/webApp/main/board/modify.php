@@ -4,7 +4,7 @@
 <head>
     <title>MODIFY</title>
     <meta content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/main.css">
     <script></script>
 </head>
 

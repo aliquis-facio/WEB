@@ -4,7 +4,7 @@
 <head>
     <title>MY LIST</title>
     <meta content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/main.css">
     <script></script>
 </head>
 
@@ -32,7 +32,7 @@ if(!isset($_SESSION['user_name'])) {
         <div>
             <!-- 여기서 선택한 것만 보이게 -->
             <div>작성글</div>
-            <div>댓글</div>
+            <div>댓글</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         </div>
 
         <table>

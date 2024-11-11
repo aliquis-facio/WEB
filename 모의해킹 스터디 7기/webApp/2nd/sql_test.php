@@ -19,7 +19,7 @@ if ($db_conn) {
     echo "DB Connect Fail<br>";
 }
 
-$sql = "select * from Data";
+$sql = "SELECT * FROM member";
 $result = mysqli_query($db_conn, $sql);
 
 // echo $result;
@@ -36,7 +36,7 @@ foreach ($data_types as $type) {
 }
 echo "foreach<br>";
 
-$sql = "insert into Data value (2, 'test', 'test1234', 'test@google.com', 'test', '2024-10-28', '010-1111-1111', 0)";
+$sql = "INSERT INTO member VALUE (2, 'test', 'test1234', 'test@google.com', 'test', '2024-10-28', '010-1111-1111', 0)";
 mysqli_query($db_conn, $sql);
 echo "insert<br>";
 

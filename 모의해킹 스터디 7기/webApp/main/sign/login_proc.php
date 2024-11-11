@@ -27,7 +27,7 @@ if (empty($input_id) or empty($input_pw)) {
     echo "<script>location.replace('./sign_in.php');</script>";
     exit;
 } else {
-    $select_sql = "select * from Data where id = '{$input_id}'";
+    $select_sql = "SELECT * FROM member WHERE id = '{$input_id}'";
     $result = mysqli_fetch_array(mysqli_query($conn, $select_sql));
 
     if ($result['pw'] == $input_pw) {

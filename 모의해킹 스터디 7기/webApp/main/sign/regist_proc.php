@@ -16,7 +16,7 @@ if(!$conn) {
 }
 
 $check = true;
-$insert_sql = "insert into Data (id, pw, email, name, birth, number, score) values (";
+$insert_sql = "INSERT INTO member (id, pw, email, name, birth, number, score) VALUES (";
 foreach($_POST as $key => $value) {
     echo "key: {$key}, value: {$value}<br>";
     if(empty($value)) {

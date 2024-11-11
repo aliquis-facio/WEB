@@ -4,7 +4,7 @@
 <head>
     <title>WRITE</title>
     <meta content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/main.css">
     <script></script>
 </head>
 
@@ -31,8 +31,10 @@ if(!isset($_SESSION['user_name'])) {
     </div>
 
     <div>
-        <input id = "board_write" type="text" placeholder = "제목을 입력해주세요">
-        <input id = "board_write" type="text" placeholder = "내용을 입력해주세요">
+        <form action="sql.php" method = "POST">
+            <input id = "board_write" type="text" placeholder = "제목을 입력해주세요">
+            <input id = "board_write" type="text" placeholder = "내용을 입력해주세요">
+        </form>
     </div>
 
     <div>

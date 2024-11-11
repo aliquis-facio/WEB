@@ -4,7 +4,7 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
 ini_set('display_errors', '1');
 
 function get_id($conn, $id, $name, $type, $var) {
-    $select_sql = "select id, name, {$type}, pw from Data where id = '{$id}' and name = '{$name}' and {$type} = '{$var}'";
+    $select_sql = "SELECT id, name, {$type}, pw FROM member WHERE id = '{$id}' AND name = '{$name}' AND {$type} = '{$var}'";
     $result = mysqli_fetch_array(mysqli_query($conn, $select_sql));
 
     if (isset($result['pw'])) {

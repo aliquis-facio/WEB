@@ -4,7 +4,7 @@
 <head>
     <title>LIST</title>
     <meta content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/main.css">
     <script></script>
 </head>
 
@@ -26,6 +26,7 @@ if(!isset($_SESSION['user_name'])) {
     <div>
         <h1>전체글보기</h1>
         <h4>X개의 글</h4>
+        <a href="write_list.php">내 게시글</a>
     </div>
 
     <div>
