@@ -5,48 +5,54 @@
     <title>VIEW</title>
     <meta content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/board_view.css">
     <script></script>
 </head>
 
 <?php
-session_start();
-if(!isset($_SESSION['user_name'])) {
-    echo "<script>location.replace('./sign/sign_in.php');</script>";
-} else {
-    $user_id = $_SESSION['user_id'];
-    $user_name = $_SESSION['user_name'];
-}
+    include("../php/user_session.php");
+    include("../php/sql_connect.php");
 ?>
 
 <body>
-    <div class = "headBox">
+    <div class = "logo">
         <a class = "title" href="../home.php">안녕하진않아요</a>
     </div>
 
-    <div>
-        <div>title</div>
-        <div>content</div>
-        <a href="">X님의 게시글 더보기</a>
+    <div class = "headBox">
+        <a class = "cyan" href="">X님의 게시글 더보기</a>
+        <a class = "orange" href="./list.php">뒤로 가기</a>
     </div>
 
-    <div>
-        <div>
-            <ul>
+    <div class = "bodyBox">
+        <div>[title]</div>
+        <div>[content]</div>
+    </div>
 
+    <div class = "footBox">
+        <div class = "coment_list">
+            <!-- 댓글 목록 -->
+            <ul>
+                <li>
+                    <span>[작성자id]</span>
+                    <span>[coment]</span>
+                </li>
             </ul>
         </div>
         
         <div>
-            <span>작성자</span>
             <span>
-                <input type="text" placeholder="댓글을 남겨보세요">
-                <button>등록</button>
+                <?php
+                    echo "{$user_id}님";
+                ?>
+            </span>
+            <span>
+                <form action="coment_write.php" method="post">
+                    <input type="text" placeholder="댓글을 남겨보세요">
+                    <button class = "orange">등록</button>
+                </form>
             </span>
         </div>
-    </div>
-
-    <div>
-        <a href="./list.php">뒤로 가기</a>
     </div>
 </body>
 

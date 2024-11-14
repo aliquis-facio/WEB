@@ -1,7 +1,7 @@
 <?php
-//error 출력
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE);
-ini_set('display_errors', '1');
+include("../php/session_handle.php");
+include("../php/sql_connect.php");
+// include("../php/get_id.php");
 
 function get_id($conn, $id, $name, $type, $var) {
     $select_sql = "SELECT id, name, {$type}, pw FROM member WHERE id = '{$id}' AND name = '{$name}' AND {$type} = '{$var}'";
@@ -15,18 +15,6 @@ function get_id($conn, $id, $name, $type, $var) {
         echo "<script>location.replace('./find_pw.php');</script>";
         exit;
     }
-}
-
-//sql 서버 연결
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin');
-define('DB_PASSWORD', 'student1234');
-define('DB_NAME', 'NotOK');
-
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if(!$conn) {
-    echo "sql not connected<br>";
 }
 
 $input_id1 = $_POST['id1'];

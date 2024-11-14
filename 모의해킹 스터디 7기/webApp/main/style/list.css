@@ -1,3 +1,24 @@
-table {
+.table {
     border: 1px;
+    /* width: 100%; */
+    border-collapse: collapse;
+    display: table;
+}
+
+.table.row {
+    border: 1px;
+    display: table-row;
+}
+
+.table.cell {
+    border: 1px;
+    display: table-cell;
+}
+
+form {
+    display: inline;
+}
+
+.no-btn {
+    border: none;
 }

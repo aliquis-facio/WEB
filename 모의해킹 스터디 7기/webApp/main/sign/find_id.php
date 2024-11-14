@@ -10,11 +10,11 @@
 
 <body>
     <div class="container">
-        <div class = "headBox">
+        <div class = "logo">
             <a class = "title" href="../home.php">안녕하진않아요</a>
         </div>
     
-        <div class = "bodyBox">
+        <div class = "bodyBox cyan">
             <h1>아이디 찾기</h1>
             <h3>아이디 찾는 방법을 선택해 주세요.</h3>
 
@@ -24,9 +24,9 @@
                 <div class="number-container">
                     <h6>회원정보에 등록한 휴대전화 번호와 입력한 휴대전화 번호가 같아야, 아이디를 받을 수 있습니다.</h6>
                     <form action="find_id_proc.php" method="post">
-                        <input name="name1" type="text" placeholder="이름">
-                        <input name="number" type="text" placeholder="휴대전화번호">
-                        <button>휴대전화로 인증</button>
+                        <input class = "long" name = "name1" type="text" placeholder="이름">
+                        <input class = "long" name = "number" type="text" placeholder="휴대전화번호">
+                        <button class = "long blue">휴대전화로 인증</button>
                     </form>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <form action="find_id_proc.php" method="post">
                         <input name="name2" type="text" placeholder="이름">
                         <input name="email" type="text" placeholder="이메일 주소">
-                        <button>이메일로 인증</button>
+                        <button class = "long blue">이메일로 인증</button>
                     </form>
                 </div>
             </div>

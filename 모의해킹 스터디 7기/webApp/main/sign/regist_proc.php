@@ -1,51 +1,40 @@
 <?php
-//error 출력
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-//sql 서버 연결
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin');
-define('DB_PASSWORD', 'student1234');
-define('DB_NAME', 'NotOK');
-
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if(!$conn) {
-    echo "sql not connected<br>";
-}
+// include("../php/user_session.php");
+include("../php/sql_connect.php");
 
 $check = true;
-$insert_sql = "INSERT INTO member (id, pw, email, name, birth, number, score) VALUES (";
 foreach($_POST as $key => $value) {
-    echo "key: {$key}, value: {$value}<br>";
     if(empty($value)) {
         $check = false;
-          break;
-    }
-
-    if($key == 'score') {
-        $insert_sql = $insert_sql . $value . ")";
-    } else {
-        $insert_sql = $insert_sql . "'" . $value . "', ";
+        break;
     }
 }
 
 if($check) {
     $id = $_POST["id"];
     $pw = $_POST["pw"];
+    $hash_pw = hash('sha512', $pw);
     $email = $_POST["email"];
     $name = $_POST["name"];
     $birth = $_POST["birth"];
     $number = $_POST["number"];
     $score = $_POST["score"];
     
+    $select_sql = "SELECT id FROM member WHERE id = '{$id}'";
+    $result = mysqli_query($conn, $select_sql);
+    if ($result) {
+        echo "<script>alert('중복되는 ID입니다!')</script>";
+        echo "<script>location.replace('./sign_up.php');</script>";
+        exit;
+    }
+    
+    $insert_sql = "INSERT INTO member (id, pw, hash_pw, email, name, birth, number, score) VALUES ('{$id}', '{$pw}','{$hash_pw}','{$email}','{$name}','{$birth}','{$number}',{$score})";
     $result = mysqli_query($conn, $insert_sql);
     echo "<script>alert('회원가입되셨습니다!')</script>";
     echo "<script>location.replace('./sign_in.php');</script>";
     exit;
 } else {
-    echo "<script>alert('Fill in the blank plz')</script>";
+    echo "<script>alert('빈칸 없이 채워주시기 바랍니다')</script>";
     echo "<script>location.replace('./sign_up.php');</script>";
     exit;
 }

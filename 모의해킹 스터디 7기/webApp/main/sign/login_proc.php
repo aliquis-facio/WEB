@@ -1,22 +1,6 @@
 <?php
-//error 출력
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-//session start
-session_start();
-
-//sql 서버 연결
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin');
-define('DB_PASSWORD', 'student1234');
-define('DB_NAME', 'NotOK');
-
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if(!$conn) {
-    echo "sql not connected<br>";
-}
+include("../php/user_session.php");
+include("../php/sql_connect.php");
 
 //id, pw 받기
 $input_id = $_POST["id"];

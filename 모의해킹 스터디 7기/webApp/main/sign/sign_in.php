@@ -9,15 +9,15 @@
 </head>
 
 <body>
-    <div class = "headBox">
+    <div class = "logo">
         <a class = "title" href="../home.php">안녕하진않아요</a>
     </div>
 
-    <div class = "bodyBox">
+    <div class = "bodyBox cyan">
         <form action="./login_proc.php" method="POST">
-            <input name = "id" type="text" placeholder = "아이디">
-            <input name = "pw" type="password" placeholder="비밀번호">
-            <button type="submit">LOG IN</button>
+            <input class = "long" name = "id" type="text" placeholder = "아이디">
+            <input class = "long" name = "pw" type="password" placeholder="비밀번호">
+            <button class = "long blue" type="submit">LOG IN</button>
         </form>
     </div>
 

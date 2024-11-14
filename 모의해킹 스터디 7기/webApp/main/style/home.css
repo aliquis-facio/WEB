@@ -1,7 +1,14 @@
-.headBox {
+.logo {
     position: absolute;
     left: 50%;
     top: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.headBox {
+    position: absolute;
+    left: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
 }
 

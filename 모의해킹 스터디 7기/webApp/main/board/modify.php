@@ -9,17 +9,12 @@
 </head>
 
 <?php
-session_start();
-if(!isset($_SESSION['user_name'])) {
-    echo "<script>location.replace('./sign/sign_in.php');</script>";
-} else {
-    $user_id = $_SESSION['user_id'];
-    $user_name = $_SESSION['user_name'];
-}
+    include("../php/user_session.php");
+    include("../php/sql_connect.php");
 ?>
 
 <body>
-    <div class = "headBox">
+    <div class = "logo">
         <a class = "title" href="../home.php">안녕하진않아요</a>
     </div>
 

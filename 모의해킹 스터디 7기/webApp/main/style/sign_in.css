@@ -2,7 +2,12 @@ button {
     margin-top: 10px;
 }
 
-.headBox {
+button .long {
+    height: 40px;
+    width: 100%;
+}
+
+.logo {
     position: absolute;
     left: 50%;
     top: 25%;
