@@ -24,10 +24,7 @@
             include_once("../php/num_of_post.php");
             echo "<h4> {$cnt}개의 글</h4>"
         ?>
-        <form action="sb_write_list.php" method="post">
-            <input type="hidden" value=<?php echo $user_id;?> name="writer">
-            <button class="no-btn pink">내 게시글</button>
-        </form>
+        <?php echo "<a href=\"./sb_post_list.php?writer={$user_id}\">내 게시글</a>";?>
         <a href="./write.php">글쓰기</a>
     </div>
 
@@ -42,18 +39,24 @@
             </div>
 
             <?php
-                $select_sql = "SELECT board_id, writer, title, write_date, view FROM board";
+                $num = 1;
+                $select_sql = "SELECT * FROM board";
                 $result = mysqli_query($conn, $select_sql);
 
                 if ($result) {
                     while($row = mysqli_fetch_array($result)) {
-                        echo "<div class = 'table row'>
-                                <div class = 'table cell'>{$row['board_id']}</div>
-                                <div class = 'table cell'>{$row['writer']}</div>
-                                <div class = 'table cell'>{$row['title']}</div>
-                                <div class = 'table cell'>{$row['write_date']}</div>
-                                <div class = 'table cell'>{$row['view']}</div>
-                                </div>";
+                        echo "<div class = 'table row'>";
+                        echo "<div class = 'table cell'>{$num}</div>";
+                        echo "<div class = 'table cell'>";
+                        echo "<a href=\"./view.php?board_id={$row['board_id']}\">{$row['title']}</a>";
+                        echo "</div>";
+                        echo "<div class = 'table cell'>";
+                        echo "<a href=\"./sb_post_list.php?writer={$row['writer']}\">{$row['writer']}</a>";
+                        echo "</div>";
+                        echo "<div class = 'table cell'>{$row['write_date']}</div>";
+                        echo "<div class = 'table cell'>{$row['view']}</div>";
+                        echo "</div>";
+                        $num += 1;
                     }
                 } else {
                     echo "오류 발생했다.<br>";

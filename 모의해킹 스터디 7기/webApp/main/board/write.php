@@ -11,7 +11,6 @@
 
 <?php
     include("../php/user_session.php");
-    include("./sql_connect.php");
 ?>
 
 <body>
@@ -21,7 +20,6 @@
 
     <div class="container">
         <h1>글쓰기</h1>
-        <!-- 작성자는 session으로 처리하자 -->
         <button class = "small orange" form = "post_write" type = "submit">등록</button>
     </div>
 

@@ -1,73 +1,76 @@
 <?php
 function login1($conn, $user_id, $user_pw) {
     // identify and certify as the same time
-    $sql = "SELECT * FROM member WHERE id = '{$user_id}' AND pw = '{$user_pw}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
-    
-    if($result) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
+    $sql = "SELECT id, pw FROM member WHERE id = '{$user_id}' AND pw = '{$user_pw}'";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if($ret) {
+        while($row = mysqli_fetch_assoc($ret)) {
+            foreach ($row as $key => $value) {
+                echo "<li>{$key}: {$value}</li>";
+            }
+            echo "<br>";
+        }
         echo "<script>alert('login1 success')</script>";
     } else {
         echo "<script>alert('fail')</script>";
-        exit;
     }
 }
 
 function login2($conn, $user_id, $user_pw) {
     // identify and certify seperation
-    $sql = "SELECT * FROM member WHERE id = '{$user_id}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
-    
-    $db_pw = $result['pw'];
-    if ($db_pw == $user_pw) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
-        echo "<script>alert('login2 success')</script>";
+    $sql = "SELECT id, pw FROM member WHERE id = '{$user_id}'";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if(isset($ret)) {
+        $row = mysqli_fetch_assoc($ret);
+
+        if ($user_pw == $row['pw']) {
+            echo "<script>alert('login2 success')</script>";
+        } else {
+            echo "<script>alert('fail')</script>";
+        }
     } else {
         echo "<script>alert('fail')</script>";
-        exit;
     }
 }
 
 function login3($conn, $user_id, $user_pw) {
     // identify and certify as the same time with hash
     $hash_user_pw = hash('sha512', $user_pw);
-    $sql = "SELECT * FROM member WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
-    
-    if($result) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
-        echo "<script>alert('login3 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
-    } else {
-        echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
+    $sql = "SELECT id, pw, hash_pw FROM member WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if (isset($ret)) {
+        $result = mysqli_fetch_assoc($ret);
+
+        if($result) {
+            echo "<script>alert('login3 success')</script>";
+        } else {
+            echo "<script>alert('fail')</script>";
+        }
     }
 }
 
 function login4($conn, $user_id, $user_pw) {
     // identify and certify seperation with hash
     $hash_user_pw = hash('sha512', $user_pw);
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
-    
-    $hash_db_pw = $result['hash_pw'];
-    if ($hash_db_pw == $hash_user_pw) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
-        echo "<script>alert('login4 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
-    } else {
-        echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
+    $sql = "SELECT id, pw, hash_pw FROM Data WHERE id = '{$user_id}'";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if (isset($ret)) {
+        $result = mysqli_fetch_assoc($ret);
+        
+        $hash_db_pw = $result['hash_pw'];
+        if ($hash_db_pw == $hash_user_pw) {
+            echo "<script>alert('login4 success')</script>";
+        } else {
+            echo "<script>alert('fail')</script>";
+        }
     }
 }
 
@@ -76,19 +79,14 @@ function login5($conn, $user_id, $user_pw) {
     $user_id = mysqli_real_escape_string($conn, $user_id);
     $user_pw = mysqli_real_escape_string($conn, $user_pw);
 
-    $sql = "SELECT * from Data where id = '{$user_id}' and pw = '{$user_pw}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $sql = "SELECT id, pw from Data where id = '{$user_id}' and pw = '{$user_pw}'";
+    echo "SQL: {$sql}<br>";
+    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
 
     if($result) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
         echo "<script>alert('login5 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
     } else {
         echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
     }
 }
 
@@ -97,20 +95,15 @@ function login6($conn, $user_id, $user_pw) {
     $user_id = mysqli_real_escape_string($conn, $user_id);
     $user_pw = mysqli_real_escape_string($conn, $user_pw);
 
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $sql = "SELECT id, pw FROM Data WHERE id = '{$user_id}'";
+    echo "SQL: {$sql}<br>";
+    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
     
     $db_pw = $result['pw'];
     if ($db_pw == $user_pw) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
         echo "<script>alert('login6 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
     } else {
         echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
     }
 }
 
@@ -120,19 +113,14 @@ function login7($conn, $user_id, $user_pw) {
     $user_ipw = mysqli_real_escape_string($conn, $user_pw);
 
     $hash_user_pw = hash('sha512', $user_pw);
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $sql = "SELECT id, pw, hash_pw FROM Data WHERE id = '{$user_id}' AND hash_pw = '{$hash_user_pw}'";
+    echo "SQL: {$sql}<br>";
+    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
     
     if($result) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
         echo "<script>alert('login7 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
     } else {
         echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
     }
 }
 
@@ -142,40 +130,16 @@ function login8($conn, $user_id, $user_pw) {
     $user_pw = mysqli_real_escape_string($conn, $user_pw);
 
     $hash_user_pw = hash('sha512', $user_pw);
-    $sql = "SELECT * FROM Data WHERE id = '{$user_id}'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $sql));
+    $sql = "SELECT id, pw, hash_pw FROM Data WHERE id = '{$user_id}'";
+    echo "SQL: {$sql}<br>";
+    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
     
     $hash_db_pw = $result['hash_pw'];
     if ($hash_db_pw == $hash_user_pw) {
-        $_SESSION['user_id'] = $result['id'];
-        $_SESSION['user_name'] = $result['name'];
-        $_SESSION['user_score'] = $result['score'];
         echo "<script>alert('login8 success')</script>";
-        // echo "<script>location.replace('home.php');</script>";
     } else {
         echo "<script>alert('fail')</script>";
-        // echo "<script>location.replace('sign_in.php');</script>";
-        exit;
     }
-}
-
-//error 출력
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-//session start
-session_start();
-
-//sql 서버 연결
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin');
-define('DB_PASSWORD', 'student1234');
-define('DB_NAME', 'NotOK');
-
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-if(!$conn) {
-    echo "sql not connected<br>";
 }
 
 function login9($conn, $user_id, $user_pw) {
@@ -207,39 +171,140 @@ function login9($conn, $user_id, $user_pw) {
         echo "{$hash_db_pw}<br>";
     
         if ($hash_db_pw == $hash_user_pw) {
-            $_SESSION['user_id'] = $result['id'];
-            $_SESSION['user_name'] = $result['name'];
-            $_SESSION['user_score'] = $result['score'];
             echo "<script>alert('login9 success')</script>";
-            // echo "<script>location.replace('home.php');</script>";
         } else {
             echo "<script>alert('fail')</script>";
-            // echo "<script>location.replace('sign_in.php');</script>";
-            exit;
         }
     } else {
         echo "<script>alert('no result')</script>";
     }
 }
 
-//id, pw 받기
-$input_id = $_POST["id"];
-$input_pw = $_POST["pw"];
+function login10($conn, $user_id, $user_pw) {
+    // identify and certify as the same time
+    $sql = "SELECT id, pw FROM member WHERE id = '" . $user_id . "' AND pw = '" . $user_pw . "'";
+    echo "SQL: {$sql}<br>";
+    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
+    
+    if($result) {
+        echo "<script>alert('login10 success')</script>";
+    } else {
+        echo "<script>alert('fail')</script>";
+    }
+}
 
-if (empty($input_id) or empty($input_pw)) {
-    echo "<script>alert('Fill in the blank plz')</script>";
-    echo "<script>location.replace('sign_in.php');</script>";
-    exit;
-} else {
-    // login1($conn, $input_id, $input_pw);
-    // login2($conn, $input_id, $input_pw);
-    // login3($conn, $input_id, $input_pw);
-    // login4($conn, $input_id, $input_pw);
-    // login5($conn, $input_id, $input_pw);
-    // login6($conn, $input_id, $input_pw);
-    // login7($conn, $input_id, $input_pw);
-    // login8($conn, $input_id, $input_pw);
-    login9($conn, $input_id, $input_pw);
+function login11($conn, $user_id, $user_pw) {
+    // identify and certify as the same time
+    $sql = "SELECT id, pw FROM member WHERE id = '
+    {$user_id}' AND pw = '
+    {$user_pw}'";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if($ret) {
+        while($row = mysqli_fetch_assoc($ret)) {
+            foreach ($row as $key => $value) {
+                echo "<li>{$key}: {$value}</li>";
+            }
+            echo "<br>";
+        }
+        echo "<script>alert('login11 success')</script>";
+    } else {
+        echo "<script>alert('fail')</script>";
+    }
+}
+
+function login12($conn, $user_id, $user_pw) {
+    // identify and certify as the same time
+    $sql = "SELECT id, pw FROM member WHERE id = ('{$user_id}') AND pw = ('{$user_pw}')";
+    echo "SQL: {$sql}<br>";
+    $ret = mysqli_query($conn, $sql);
+
+    if($ret) {
+        while($row = mysqli_fetch_assoc($ret)) {
+            foreach ($row as $key => $value) {
+                echo "<li>{$key}: {$value}</li>";
+            }
+            echo "<br>";
+        }
+        echo "<script>alert('login12 success')</script>";
+    } else {
+        echo "<script>alert('fail')</script>";
+    }
+}
+
+//error 출력
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+//session start
+session_start();
+
+//sql 서버 연결
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'admin');
+define('DB_PASSWORD', 'student1234');
+define('DB_NAME', 'NotOK');
+
+$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+if(!$conn) {
+    echo "sql not connected<br>";
+}
+
+//id, pw 받기
+foreach ($_POST as $key => $value) {
+    $num = substr($key, 2);
+    break;
+}
+echo "num: {$num}<br>";
+
+$input_id = $_POST["id{$num}"];
+$input_pw = $_POST["pw{$num}"];
+echo "id: {$input_id}<br>";
+echo "pw: {$input_pw}<br>";
+
+$num = (int)$num;
+switch($num) {
+    case 1:
+        login1($conn, $input_id, $input_pw);
+        break;
+    case 2:
+        login2($conn, $input_id, $input_pw);
+        break;
+    case 3:
+        login3($conn, $input_id, $input_pw);
+        break;
+    case 4:
+        login4($conn, $input_id, $input_pw);
+        break;
+    case 5:
+        login5($conn, $input_id, $input_pw);
+        break;
+    case 6:
+        login6($conn, $input_id, $input_pw);
+        break;
+    case 7:
+        login7($conn, $input_id, $input_pw);
+        break;
+    case 8:
+        login8($conn, $input_id, $input_pw);
+        break;
+    case 9:
+        login9($conn, $input_id, $input_pw);
+        break;
+    case 10:
+        login10($conn, $input_id, $input_pw);
+        break;
+    case 11:
+        login11($conn, $input_id, $input_pw);
+        break;
+    case 12:
+        login12($conn, $input_id, $input_pw);
+        break;
+    case 13:
+        login13($conn, $input_id, $input_pw);
+        break;
 }
 
 mysqli_close($conn);

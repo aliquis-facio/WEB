@@ -21,4 +21,8 @@ form {
 
 .no-btn {
     border: none;
+    padding: 0;
+
+    color: pink;
+    background: white;
 }

@@ -1,6 +1,9 @@
 <?php
-include("../php/user_session.php");
 include("../php/sql_connect.php");
+
+if(!session_id()) {
+    session_start();
+}
 
 //id, pw 받기
 $input_id = $_POST["id"];
